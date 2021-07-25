@@ -5,18 +5,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 /*
  * @author Jeff
- * @date 7/25/21 12:16 AM
+ * @date 7/25/21 12:29 AM
  */
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Conversation {
     @Id
     String id;
-    String username;
+    String user1;
+    String user2;
+    List<String> messages;
 }

@@ -1,7 +1,7 @@
 package com.mysqlmongo.controller;
 
-import com.mysqlmongo.dao.UserRepository;
 import com.mysqlmongo.entity.User;
+import com.mysqlmongo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,21 +17,21 @@ import java.util.UUID;
  */
 @RestController
 public class UserController {
-    private final UserRepository userRepository;
+    private final UserMapper userMapper;
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserMapper userRepository) {
+        this.userMapper = userRepository;
     }
-
-    @PostMapping("/user")
-    public User createUser(@RequestBody User user) {
-        user.setId(UUID.randomUUID().toString());
-        userRepository.save(user);
-        return user;
-    }
-
+//
+//    @PostMapping("/user")
+//    public User createUser(@RequestBody User user) {
+//        user.setId(UUID.randomUUID().toString());
+//        userRepository.save(user);
+//        return user;
+//    }
+//
     @GetMapping("/users")
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userMapper.findAll();
     }
 }
