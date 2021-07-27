@@ -22,14 +22,13 @@ public class UserController {
     public UserController(UserMapper userRepository) {
         this.userMapper = userRepository;
     }
-//
-//    @PostMapping("/user")
-//    public User createUser(@RequestBody User user) {
-//        user.setId(UUID.randomUUID().toString());
-//        userRepository.save(user);
-//        return user;
-//    }
-//
+
+    @PostMapping("/user")
+    public User createUser(@RequestBody User user){
+        userMapper.insert(user);
+        return user;
+    }
+
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userMapper.findAll();

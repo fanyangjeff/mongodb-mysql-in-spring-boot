@@ -1,6 +1,7 @@
 package com.mysqlmongo.mapper;
 
 import com.mysqlmongo.entity.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -14,4 +15,7 @@ import java.util.List;
 public interface UserMapper {
     @Select("SELECT * from users")
     List<User> findAll();
+
+    @Insert("INSERT INTO users (username) VALUES (#{username})")
+    void insert(User user);
 }
